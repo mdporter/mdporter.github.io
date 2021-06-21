@@ -1,0 +1,98 @@
+```{r options, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+library(dplyr)
+library(stringr)
+library(htmltools)
+library(bib2df)
+```
+
+```{r html, include=FALSE}
+library(htmltools)
+
+#-- Function to make html list elements
+html_list <- function(x){
+  x = lapply(x, HTML)  # keep any html code
+  tags$ul(lapply(x, tags$li))
+}
+
+```
+
+```{r bibtex, include=FALSE}
+#-- Bibtex functions
+library(bib2df)
+library(dplyr); library(stringr)
+
+#- load bib file
+bib = bib2df("~/Dropbox/DOCS/Porter_CV/porterPubs.bib", 
+             separate_names=TRUE) %>% 
+  filter(!is.na(BIBTEXKEY))                # Remove blank fields
+
+
+
+#- format author names from AUTHOR list column
+format_names <- function(x){
+  x %>% 
+    bind_rows(.id="ind") %>% mutate(ind = as.integer(ind)) %>% 
+    mutate(fi = str_sub(first_name, 1, 1), 
+           mi = str_sub(middle_name, 1, 1),
+           initials = paste0(
+                ifelse(!is.na(mi), paste(fi, mi, sep="."), fi), 
+                ".")) %>% 
+    transmute(name = paste(last_name, initials), ind) %>% 
+    group_by(ind) %>% 
+    mutate(name = ifelse(row_number() == n() & n()>1, 
+                         paste("and", name), name)) %>% 
+    summarize(name=ifelse(n()>2, paste(name, collapse=", "),
+                          paste(name, collapse=" "))) %>% 
+    arrange(ind) %>% pull(name)
+}
+
+#- make text italicized
+italic <- function(x, format=c("html", "markdown", "latex")) {
+  format = match.arg(format)
+  switch(format, 
+         "html" = paste("<em>", x ,"</em>"), 
+         "markdown" = paste0("*", x, "*"),
+         "latex" = paste0("\\emph(", x, ")"))
+}
+
+
+#- function to format a bib entry
+format_article <- function(bibdf, format=c("html", "markdown", "latex")){
+  format = match.arg(format)
+  x = bibdf %>% 
+    mutate(TITLE = str_replace_all(TITLE, "[{}]", ""),
+           VOLUME = ifelse(is.na(VOLUME), "", VOLUME),
+           NUMBER = ifelse(is.na(NUMBER), "", paste0("(", NUMBER, ")")),
+           PAGES = ifelse(is.na(PAGES), "", paste0(PAGES, ", ") ),
+           YEAR = ifelse(is.na(YEAR), "", YEAR)) %>% 
+    mutate(citation = case_when(
+      CATEGORY == "ARTICLE" ~ 
+        paste0(TITLE, ". ", italic(JOURNAL, format), ", ", 
+               VOLUME, NUMBER, ": ", PAGES, YEAR ,". ", 
+               "(", authors, ")"),
+      CATEGORY == "INBOOK" ~
+        paste0(CHAPTER, ". In ", italic(BOOKTITLE, format), ", ",
+               PUBLISHER, ", ", PAGES, YEAR ,". ", 
+               "(", authors, ")"), 
+      CATEGORY == "INPROCEEDINGS" ~
+        paste0(TITLE, ". ", italic(BOOKTITLE, format), ", ", 
+               PAGES, YEAR, ". ", 
+               "(", authors, ")"),
+      TRUE ~
+        paste0(TITLE, ". ", ifelse(is.na(NOTE), "", paste0("[", NOTE, "]")),  " (", authors, ")")
+    ))
+  ifelse(is.na(x$URL), x$citation, 
+         paste0(x$citation , " <a href=", x$URL, ">", "[PDF]", "</a>"))
+}
+
+```
+
+
+```{r}
+bib = bib %>% 
+  mutate(authors = format_names(AUTHOR))
+```
+
+

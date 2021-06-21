@@ -1,0 +1,17 @@
+name: "Michael D. Porter"
+output_dir: "."
+navbar:
+  title: "Michael D. Porter"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Publications"
+      href: publications.html
+    - text: "Research"
+      href: research.html      
+    - text: "Software"
+      href: software.html      
+    - text: "Teaching"
+      href: teaching.html      
+    - text: "Blog"
+      href: "https://mdporter.github.io/blog/"
