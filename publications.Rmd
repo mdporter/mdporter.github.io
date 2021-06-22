@@ -1,0 +1,53 @@
+---
+pagetitle: "Michael D. Porter: Publications"
+---
+
+```{r, child="_setup.Rmd"}
+```
+
+
+```{r}
+h2("Publications",
+a(href="https://scholar.google.com/citations?user=pbOK99MAAAAJ&hl=en",
+  tags$i(class="ai ai-google-scholar", style="font-size: .8em;")),
+a(href="https://orcid.org/0000-0001-9316-3578", tags$i(class="ai ai-orcid", style="font-size: .8em;")))
+hr(class="header")
+```
+
+
+```{r articles, results='asis'}
+#-- Articles
+articles = bib %>% 
+  filter(CATEGORY %in% c("ARTICLE", "INPROCEEDINGS", "INBOOK")) %>% 
+  mutate(citation = format_article(., format="markdown")) 
+
+n.articles = nrow(articles)
+articles %>% 
+  arrange(desc(YEAR), authors) %>% 
+  transmute(number = paste0(row_number(), "."), citation) %>% 
+  knitr::kable(col.names=c('',''))
+```
+
+
+```{r}
+hr()
+h3("In Progress")
+```
+
+
+```{r in.progress, results='asis'}
+#-- In Progress
+inprogress = c("white-etal-endoexo", "li-porter-anomaly-dynamic-network",
+         "liao-porter-predictability", "clay-MISQ", "terrorism-book")
+articles = bib %>% 
+  filter(BIBTEXKEY %in% inprogress) %>% 
+  mutate(citation = format_article(., format="markdown")) 
+
+articles %>% 
+  mutate(BIBTEXKEY = factor(BIBTEXKEY, inprogress)) %>% 
+  arrange(BIBTEXKEY) %>% 
+  transmute(number = paste0(n.articles + row_number(), "."), citation) %>%
+  knitr::kable(col.names=c('',''))
+
+```
+

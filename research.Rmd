@@ -1,0 +1,111 @@
+---
+pagetitle: "Michael D. Porter: Research"
+---
+
+```{r, child="_setup.Rmd"}
+```
+
+
+
+```{r}
+h2("Research", style="display:block")
+div(class="btn-group", style="font-size:86%",
+    a(href="#event-prediction",
+      tags$button(class="button", "Event Prediction")),
+    a(href="#pattern-detection",
+      tags$button(class="button", "Pattern and Event Detection")),
+    a(href="#data-linkage",
+      tags$button(class="button","Data Linkage"))
+)
+
+hr(class="header")
+```
+
+```{r}
+#- Event Prediction
+div(class="row",
+  div(class="col-sm-12", 
+    h3("Event Prediction and Forecasting", 
+       a(href="#", "[top]", style="font-size:50%"), 
+         id="event-prediction"), 
+    p("Event prediction is concerned with", 
+      em(style="color:#E57200;","modeling where, when, and why events occur."),
+      "The estimated locations and times of future events can be informed by characteristics and attributes of the spatio-temporal environment (i.e., feature space) as well as by the patterns in the event history. A Hawkes, or self-exciting point process, model is a formalized approach to combine information from both the feature space and the event history while automatically determining how much weight to give to recent events. These models have been used to represent processes such as: earthquakes,  crime and conflict, traffic incidents, social media activity, financial markets, new product adoption, social network communication, neural spiking, and disease spread."),
+    p("Topics include:", 
+      em("point processes, Hawkes models, self-exciting models, kernel density estimation, spatial statistics, time series, predictive analytics, machine learning.")
+      ),
+    p("Recent Papers:"),
+    html_list(
+    bib %>% 
+      filter(GROUPS %in% "event.prediction") %>%
+      arrange(desc(YEAR), authors) %>% 
+      mutate(citation = format_article(., format="html")) %>% 
+      pull(citation)),
+    p("Recent Funding:"), 
+    html_list("Center for Advanced Public Safety: <em> Predictive Crash Analytics </em>; $119,996.")    
+))
+```
+
+```{r}
+hr()
+
+#-- Pattern and Event Detection
+div(class="row",
+  div(class="col-sm-12", 
+    h3("Pattern and Event Detection", 
+       a(href="#", "[top]", style="font-size:50%"), 
+       id="pattern-detection"), 
+    p("Pattern and event detection is concerned with", 
+      em(style="color:#E57200;", "discovering patterns and anomalies in data."),
+      "This often involves problems where the quick detection of anomalies or unusual observations from a data stream is crucial (e.g., disease and crime outbreak detection, activation of terrorist sleeper cell). But in addition to being able to detect the changes quickly, we should also be able to identify the cause of the event - like the spatial location where the outbreak started or the network neighborhood responsible for fraudulent financial activities. 
+
+Clustering is another approach to making sense of complex data. This is the task of grouping observations that share features or have similar patterns. Similarly, data mining and machine learning approaches can be used to identify the features most useful for prediction or understanding the data generating process. 
+
+Recent projects involve detecting anomalies in large dynamic networks and spatial event data."),
+    p("Topics include:", 
+      em("anomaly detection, dynamic network analysis, spatial hotspot detection, clustering, data mining, NMF.")
+      ),
+    p("Recent Papers:"),
+    html_list(
+    bib %>% 
+      filter(GROUPS %in% "pattern.detection") %>%
+      arrange(desc(YEAR), authors) %>% 
+      mutate(citation = format_article(., format="html")) %>% 
+      pull(citation)),
+    p("Recent Funding:"), 
+    html_list("Centers for Disease Control and Prevention:  <em> Anomaly Detection in Space and Time </em>; $50,000.")
+))
+```
+
+```{r}
+hr()
+
+#-- Data Linkage
+div(class="row",
+  div(class="col-sm-12", 
+    h3("Data Linkage", 
+       a(href="#", "[top]", style="font-size:50%"), 
+       id="data-linkage"), 
+    p("Data linkage is concerned with", 
+      em(style="color:#E57200;", "matching data that correspond to the same entity."),
+      "Our work in data linkage is, in essence, the assessment of statistical evidence in large disparate data. One example is crime linkage, the process of grouping together the unsolved crimes that were committed by the same offender(s). We use the behavioral patterns in crime data that have the most power to discriminate between offenders to create statistical measures of evidence. This helps crime analysts make the complex comparisons of not only the similarity, but also the distinctiveness of variables related to an offender's site selection behaviors, crime scene behaviors, and possibly even eyewitness descriptions.
+      Besides applications in statistical forensics, concepts of data linkage can also be used for record linkage, the process of linking data records that correspond to the same entity. The recent political claims of voter fraud fit into this category as do medical record linkage to improve health outcomes and detect dangerous drug interactions.
+      We are also developing network based approaches to road conflation, the task of merging multiple maps to better understand the traversable roads and paths of a region.   "),
+    p("Topics include:", 
+      em("crime linkage, statistical forensics, record linkage, road conflation, clustering, Bayesian.")
+      ),
+    p("Recent Papers:"),
+    html_list(
+    bib %>% 
+      filter(GROUPS %in% "data.linkage") %>%
+      arrange(desc(YEAR), authors) %>% 
+      mutate(citation = format_article(., format="html")) %>% 
+      pull(citation)),
+    p("Recent Funding:"), 
+    html_list("National Institute of Justice:  <em> Statistical Methods for Spatio-Temporal Crime Series Linkage  </em>; $551,656.")    
+))
+```
+
+
+
+

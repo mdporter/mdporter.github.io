@@ -1,0 +1,84 @@
+---
+pagetitle: "Michael D. Porter: Software"
+---
+
+```{r, child="_setup.Rmd"}
+```
+
+
+```{r}
+h2("Software")
+hr(class="header")
+```
+
+```{r}
+#-- GitHub
+div(
+a(href="https://github.com/mdporter",
+  h3(tags$i(class="fab fa-github fa-lg"), "GitHub")
+)
+)
+
+p("You can find code related to papers, teaching, and interests on my ",
+  a(href="https://github.com/mdporter", "GitHub site: mdporter"))
+    
+hr()
+```
+
+
+```{r}
+# 
+# https://darren-frye.shinyapps.io/EventRisk/
+
+
+    div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+          a(href="https://darren-frye.shinyapps.io/EventRisk/",
+            h3("COVID-19 Event Risk Assessment Dashboard"))))
+        
+    div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+          p("When considering whether to host or attend a gathering during the pandemic, it is helpful to have an idea about how risky the event is. One important aspect of this assessment is the probability that someone at the event will",  em("unknowingly"), "be contagious with COVID-19. To help with this analysis, we have put together the", a(href="https://darren-frye.shinyapps.io/EventRisk/", code("COVID-19 Event Risk Assessment Dashboard,")),  "an interactive tool that provides the",  em("estimated probability that someone at an event will unknowingly be contagious with COVID-19"), "based on the number of guests and their locations.")),
+        div(class="col-sm-6", style="",
+    p("The dashboard allows a user to enter the: (i) event date, (ii) location (US county), and (iii) number of guests and will produce a plot showing the likelihood, with uncertainty bands, that someone at the event unknowningly is contagious with COVID-19. A more complex analysis, called Event Builder, allows a user to get a risk assessment if the event comprises people from many different locations."))
+)
+
+```
+
+```{r}
+hr()
+```
+
+
+```{r}
+#-- crimelinkage R package: split into 2 columns
+
+    div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+          a(href="http://cran.r-project.org/web/packages/crimelinkage/",
+            h3("crimelinkage R package"))))
+        
+    div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+          p("The", a(href="http://cran.r-project.org/web/packages/crimelinkage/", code("crimelinkage")), " package is a set of tools to help crime analysts and researchers with tasks related to crime linkage. This package includes methods for criminal case linkage, crime series identification and clustering, and suspect identification."),
+    br(),
+    p("The objective of the", a(href="http://cran.r-project.org/web/packages/crimelinkage/", code("crimelinkage")),  "package is to provide a statistical approach to criminal linkage analysis that discovers and groups crime events that share a common offender and prioritizes suspects for further investigation. Bayes factors are used to describe the strength of evidence that two crimes are linked. Using concepts from agglomerative hierarchical clustering, the Bayes factors for crime pairs can be combined to provide similarity measures for comparing two crime series. This facilitates crime series clustering, crime series identification, and suspect prioritization.")),
+        div(class="col-sm-6", style="",
+p("More details about the methodology and its performance on actual crime data can be found in the papers below."),
+    html_list(c("Porter, M.D. (2016) A Statistical Approach to Crime Linkage, <em>The American Statistician, </em>70(2), 152-165.", 
+                "Reich, B.J. and Porter, M.D. (2015) Partially-supervised spatiotemporal clustering for burglary crime series identification,  <em>Journal of the Royal Statistical Society-A</em>, 178(2), 465-480.",
+                "Porter, M.D. and&nbsp;</span><span>Reich, B.J.</span><span> (2014)</span>&nbsp;Statistical Methods for Crime Series Linkage, NIJ Technical Report.",
+                "Bouhana, N., Johnson, S.D., and Porter, M.D. (2016) Consistency and specificity in burglars who commit prolific residential burglary: Testing the core assumptions underpinning behavioural crime linkage, </span><em><span>Legal and Criminological Psychology, </span></em><span>21(1), 77-94.")),
+    p("This work was supported by the National Institute of Justice project 2010-DE-BX-K255:", em("Statistical Methods for Crime Series Linkage"))
+))
+```
+
+
+```{r}
+# Materials from IACA 2015: found in the bama website
+# Put up on GitHub and link from here
+```
+
+
+
+

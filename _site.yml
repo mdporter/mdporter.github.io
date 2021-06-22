@@ -1,10 +1,17 @@
 name: "Michael D. Porter"
-output_dir: "."
+output_dir: "docs"
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
+    include:
+      before_body: header.html
+      after_body: footer.html
+    css: styles.css    
 navbar:
-  title: "Michael D. Porter"
+  #title: "Michael D. Porter"
+  title: '<div> <img id="logo" src="images/touch-icon-76.png"/> <span> Michael D. Porter </span> </div>'
   left:
-    - text: "Home"
-      href: index.html
     - text: "Publications"
       href: publications.html
     - text: "Research"
@@ -13,5 +20,16 @@ navbar:
       href: software.html      
     - text: "Teaching"
       href: teaching.html      
+  right:
     - text: "Blog"
-      href: "https://mdporter.github.io/blog/"
+      href: "https://mdporter.github.io/blog/"  
+    - text: "CV"
+      href: "porterCV.pdf"      
+    - icon: fab fa-github fa-lg iconstyle
+      href: "https://github.com/mdporter"
+    - icon: ai ai-google-scholar ai-lg iconstyle  
+      href: "https://scholar.google.com/citations?user=pbOK99MAAAAJ&hl=en"
+    - icon: fab fa-linkedin fa-lg iconstyle
+      href: "http://www.linkedin.com/in/michael-d-porter-5569477a"   
+    - icon: ai ai-orcid ai-lg iconstyle
+      href: "https://orcid.org/0000-0001-9316-3578"    

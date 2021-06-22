@@ -20,10 +20,25 @@ div(class="container-fluid",
             h5("Associate Professor"),
             h5("Data Science"),
             h5("Systems and Information Engineering"),
+            # h5("Darden School of Business"),
             h5("University of Virginia"),
+            HTML(' 
+              <div style="text-align:left; padding-left: 35%;"> 
+              <h4> <i class="fa fa-phone"></i> 434.243.3173</h4>
+              <h4> <i class="fa fa-home"></i> 102F Olsson Hall</h4>
+              <h4> <i class="fa fa-at"></i> mdporter@virginia.edu</h4>
+              </div>
+             '),
             br(),
-            h3(
-              a(href="https://engineering.virginia.edu/faculty/michael-d-porter", "Engineering Faculty Page"))
+            h3(a(href="https://engineering.virginia.edu/faculty/michael-d-porter", "Engineering Faculty Page"))
+            # h3(
+              # a(href="https://www.darden.virginia.edu/components/templates/T17-Faculty-Interior_Profile_Page.pb.aspx?pageid=10737420180", "Darden Faculty Page"))                  #a(href="https://www.darden.virginia.edu/faculty-research/directory/michael-porter", "Darden Faculty Page"))
+            #   h5("102F Olsson Hall")
+            # ),
+            # br(),
+            # h5("151 Engineers Way, P.O. Box 400747"),
+            # br(), 
+            # h5("Charlottesville, VA 22904")
         )
     )
 )
@@ -52,7 +67,7 @@ about = p("I'm an Associate Professor in the ",
               a(href="http://bwca.com/", "outdoors.")) 
 
 # Education and Experience
-background = p("I received a Ph.D. from the University of Virginia in 2006, a M.S. from Vanderbilt University in 2003, and a B.S. from Purdue University in 1998. I have been an Assistant and Associate professor of Applied Statistics at the University of Alabama (2013-2018), principal research scientist for Spadac, Geoeye, and DigitalGlobe (2008-2013), post-doc at NCSU and SAMSI (2006-2008), as well as an industrial engineer and maintenance supervisor for Sanford/Newell Brands (1998-2001).")
+background = p("I received a Ph.D. from the University of Virginia in 2006, a M.S. from Vanderbilt University in 2003, and a B.S. from Purdue University in 1998. I have been an Assistant and Associate professor of Applied Statistics at the University of Alabama (2013-2018), principal research scientist for Spadac, Geoeye, and DigitalGlobe (2008-2013), post-doc at NCSU and",  a(href="https://www.samsi.info/", "SAMSI"), "(2006-2008), as well as an industrial engineer and maintenance supervisor for Sanford/Newell Brands (1998-2001).")
 
 # Research
 research = div(

@@ -1,0 +1,169 @@
+---
+pagetitle: "Michael D. Porter: Teaching"
+---
+
+```{r, child="_setup.Rmd"}
+```
+
+
+```{r}
+h2("Teaching")
+hr(class="header")
+```
+
+
+```{r}
+teaching = tibble::tribble(
+  ~id, ~title, ~year, ~semester, ~URL,
+  # 2021 Spring
+  "DS 6030", "Statistical Learning (online)", 2021, "Spring", NA,
+  "SYS 4582/6018", "Data Mining", 2021, "Spring", "https://mdporter.github.io/SYS6018/",
+  "SYS 4054", "Systems Design II", 2021, "Spring", NA,
+  # 2020 Fall
+  "SYS 6018", "Data Mining", 2020, "Fall", "https://mdporter.github.io/SYS6018/",
+  "SYS 4053", "Systems Design I", 2020, "Fall", NA,
+  # 2020 Spring
+  "SYS 4054", "Systems Design II", 2020, "Spring", NA,
+  "SYS 6018", "Data Mining (Summer; online)", 2020, "Spring", NA,
+  # 2019 Fall
+  "SYS 2202", "Data and Information Engineering", 2019, "Fall", "https://mdporter.github.io/SYS2202/",
+  "SYS 6018", "Data Mining", 2019, "Fall", "https://mdporter.github.io/SYS6018/",
+  "SYS 4055", "Systems Engineering Design Colloquium II", 2019, "Fall", NA,
+  "SYS 4053", "Systems Design I", 2019, "Fall", NA,
+  # 2019 Spring
+  "SYS 4582/6018", "Data Mining", 2019, "Spring", "https://mdporter.github.io/SYS6018/",
+  "QA 7600", "Data Analysis and Optimization (DAO)", 2019, "Spring", "http://registration.darden.virginia.edu/Course/Info/Abstracts_New/7600-0910.htm", 
+  "SYS 4054", "Systems Design II", 2019, "Spring", NA,
+  # 2018 Fall
+  "SYS 3055", "Systems Engineering Design Colloquium I", 2018, "Fall", NA, 
+  "SYS 4055", "Systems Engineering Design Colloquium II", 2018, "Fall", NA,
+  "SYS 4053", "Systems Design I", 2018, "Fall", NA,
+  # Alabama
+  "ST 260",   "Statistical Data Analysis", 2018, "Spring", NA, 
+  "ST 554",   "Mathematical Statistics I", 2017, "Fall", "https://mdporter.github.io/ST554/",
+  "ST 697", "Advanced Statistical Learning", 2017, "Fall", "https://mdporter.github.io/ST697/", 
+  "ST 597", "Introduction to Data Analytics (with R)", 2017, "Spring", "https://mdporter.github.io/ST597/",
+  "ST 554", "Mathematical Statistics I", 2016, "Fall", NA,
+  "ST 560", "Statistical Methods", 2016, "Fall", NA,
+  "ST 591", "Introduction to Statistical Learning", 2016, "Fall", NA, 
+  "ST 260",   "Statistical Data Analysis", 2016, "Spring", NA,   
+  "ST 597", "Introduction to Data Analytics (with R)", 2016, "Spring", NA,
+  "ST 560", "Statistical Methods", 2015, "Fall", NA,
+  "ST 697", "Advanced Statistical Learning", 2015, "Fall", NA,
+  "ST 260",   "Statistical Data Analysis", 2015, "Spring", NA,  
+  "ST 597", "Introduction to Data Analytics (with R)", 2015, "Spring", NA,
+  "ST 260",   "Statistical Data Analysis", 2014, "Fall", NA 
+) %>% mutate(course = paste(id, title, sep=": "), 
+             course = ifelse(is.na(URL), paste("<p>", course, "</p>"), 
+                             paste("<p>", 
+                                   "<a class=teaching href=", URL, ">", paste0(id, ":"), "</a>",
+                                   title,
+                                   "</p>")))
+
+
+
+format_teaching <- function(x, yr=2018, sem="Fall"){
+  c('<div class="col-sm-6" style="text-align:left">',
+    paste("<h3>", sem, yr, "</h3>"),
+    x %>% filter(year==yr, semester==sem) %>% pull(course), 
+    "</div>"
+  ) %>% 
+    paste(collapse=" \n") 
+}
+```
+
+```{r,  results='asis'}
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2020, sem="Fall"),
+  format_teaching(teaching, yr=2021, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2019, sem="Fall"),
+  format_teaching(teaching, yr=2020, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2018, sem="Fall"),
+  format_teaching(teaching, yr=2019, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  '<div class="row">',
+  format_teaching(teaching, yr=2017, sem="Fall"),
+  format_teaching(teaching, yr=2018, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  '<div class="row">',
+  format_teaching(teaching, yr=2016, sem="Fall"),
+  format_teaching(teaching, yr=2017, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  '<div class="row">',
+  format_teaching(teaching, yr=2015, sem="Fall"),
+  format_teaching(teaching, yr=2016, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  '<div class="row">',
+  format_teaching(teaching, yr=2014, sem="Fall"),
+  format_teaching(teaching, yr=2015, sem="Spring"),  
+  "</div>"
+  )
+```
+
+
+
+```{r, eval=FALSE}
+#-- First section split into 2 columns
+div(class="container-fluid", 
+    
+#- 2018-19    
+    div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+            h5("Fall 2018"),
+            p("SYS-3055:", "Systems Engineering Design Colloquium I"), p("SYS-4055:", "Systems Engineering Design Colloquium II")
+            ),
+        div(class="col-sm-6", style="text-align:left",
+            h5("Spring 2019")
+        )
+    ),
+#- 2017-18
+div(class="row", 
+        div(class="col-sm-6", style="text-align:left",
+            h5("Fall 2017"),
+            p("ST 554:", "Mathematical Statistics I"), 
+            p("ST 697:", "Advanced Statistical Learning")
+            ),
+        div(class="col-sm-6", style="text-align:left",
+            h5("Spring 2018"), 
+            p("ST 260:", "Statistical Data Analysis")
+        )
+    )    
+)
+```
+

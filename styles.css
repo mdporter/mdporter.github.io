@@ -1,0 +1,155 @@
+
+/* #232D4B;  UVA blue   */ 
+/* #E57200;  UVA orange */ 
+
+/* NAVBAR SETTINGS */
+
+.navbar-brand {
+  font-family: 'Lato', sans-serif;
+  font-size: 2.5rem;
+  vertical-align: center;
+}
+
+
+#logo {
+  width: 25px;
+  margin-bottom: 5px;
+	margin-right: 5pt;
+}
+
+.navbar {
+  background-color: #232D4B;
+}
+
+.navbar-brand:hover {
+  color: #E57200 !important; 
+}
+
+ul.nav a:hover, ul.nav a:active, li.active { 
+  color: #E57200 !important; 
+  background-color: white !important;  
+  border:1px solid #E57200;
+}
+
+.iconstyle:hover  { 
+  color: #E57200 !important; 
+}
+
+
+
+
+
+/* FOOTER SETTINGS */
+.page-footer {
+    background-color: #E57200;  /* UVA orange */ 
+    padding: 1px 0 1px 0;
+    margin-top: 10px;
+}
+
+hr.header {
+    background-color: #E57200;  /* UVA orange */ 
+    padding: 1px 0 1px 0;
+    margin-top: 10px;
+}
+
+
+/* HEADINGS */
+
+h2 {
+  display: block;
+  font-size: 2em;
+  margin:0;
+  font-weight: bold;
+  color: #E57200;  /* UVA orange */  
+}
+
+h3 {
+    display: block;
+    font-size: 1.25em;
+    font-weight: bold;   
+    color: #232D4B;  /* UVA blue */
+    margin: 0 0 5px 0;
+}
+
+h5 { 
+    margin: 0;
+    display: block;
+    font-size: 1.5em;
+    color: black;
+}
+
+
+
+
+/* Tables (for publications page) */
+
+td {
+    vertical-align: top;
+    padding: 0 3px 10px 0;
+}
+
+
+/* Setting for HOME page */
+
+.header-home {
+  text-align: center; 
+  color: #E57200;  /* UVA orange */ 
+  font-size: 1.5em; 
+  font-weight: bold;
+}
+
+.body-home {
+  text-align: justify; 
+  color: black; 
+  font-size: 1em;
+}
+
+
+/* BUTTONS */
+ 
+.button {
+    background-color: white;
+    color: black;
+    border: 2px solid #232D4B;   /* UVA blue */ 
+}
+
+.button:hover {
+  background-color: #E57200;  /* UVA orange */; 
+}
+
+
+/* LINKS */
+
+a:link, a:visited {
+    color: #E57200;  /* UVA orange */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline; 
+}
+
+a:hover, a:active {
+    background-color: #232D4B;   /* UVA blue */ 
+}
+
+a.teaching:link,  a.teaching:link, a.teaching:hover, a.teaching:active {
+  display: inline;
+  text-decoration: underline;
+}
+
+
+a h5:link  {
+  color: #E57200;  /* UVA orange */
+}
+
+a h5:hover{ 
+  color: #E57200;  /* UVA orange */
+  font-weight: bold;
+  background-color: #232D4B;  /* UVA blue */ 
+  display: inline;
+}
+
+
+/* Style for fa and ai fonts */
+.iconstyle {
+  color:white; 
+}
