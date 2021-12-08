@@ -24,10 +24,11 @@ library(bib2df)
 library(dplyr); library(stringr)
 
 #- load bib file
+# add groups = {pattern.detection} to references to include in research.Rmd
 bib = bib2df("~/Dropbox/DOCS/Porter_CV/porterPubs.bib", 
              separate_names=TRUE) %>% 
-  filter(!is.na(BIBTEXKEY))                # Remove blank fields
-
+  filter(!is.na(BIBTEXKEY))  %>%               # Remove blank fields
+  mutate(YEAR = as.integer(YEAR))
 
 
 #- format author names from AUTHOR list column

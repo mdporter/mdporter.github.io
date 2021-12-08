@@ -42,7 +42,8 @@ div(class="row",
       mutate(citation = format_article(., format="html")) %>% 
       pull(citation)),
     p("Recent Funding:"), 
-    html_list("Center for Advanced Public Safety: <em> Predictive Crash Analytics </em>; $119,996.")    
+    html_list(c("Ivy Foundation COVID-19 Translational Research Fund: <em> Epidemiologic Modeling, Public Health Surveillance and Sewershed Monitoring to Predict Surges in the COVID-19 Pandemic </em>; $100,000.", 
+      "Center for Advanced Public Safety: <em> Predictive Crash Analytics </em>; $119,996."))    
 ))
 ```
 
@@ -73,7 +74,9 @@ Recent projects involve detecting anomalies in large dynamic networks and spatia
       mutate(citation = format_article(., format="html")) %>% 
       pull(citation)),
     p("Recent Funding:"), 
-    html_list("Centers for Disease Control and Prevention:  <em> Anomaly Detection in Space and Time </em>; $50,000.")
+    html_list(c("National Cooperative Highway Research Program (NCHRP): <em> Implementing and Leveraging Machine Learning at State Departments of Transportation </em>; $350,000." ,
+"iThrive Pilot Translation and Clinical Studies and Engineering in Medicine: <em> Impact Quantification of Donor Echocardiographic Data on Pediatric Heart Transplant Recipient Outcomes </em>; $82,716.",
+                "Centers for Disease Control and Prevention:  <em> Anomaly Detection in Space and Time </em>; $50,000."))
 ))
 ```
 
