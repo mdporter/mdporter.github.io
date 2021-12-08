@@ -86,7 +86,7 @@ research = div(
               html_list(c("crime linkage", "statistical forensics", 
                           "record linkage", "road conflation")),
               strong("Application areas: "), 
-              "Criminology, Transportation, Terrorism, Defense, Security, Forensics, Business"
+              "Criminology, Transportation, Medicine, Terrorism, Defense, Security, Forensics, Business"
 )
 
 

@@ -15,6 +15,10 @@ hr(class="header")
 ```{r}
 teaching = tibble::tribble(
   ~id, ~title, ~year, ~semester, ~URL,
+  # 2022 Spring
+  "SYS 4582/6018", "Data Mining", 2022, "Spring", "https://mdporter.github.io/SYS6018",
+  # 2021 Fall
+  "DS 6030", "Statistical Learning", 2021, "Fall", "https://mdporter.github.io/DS6030",
   # 2021 Spring
   "DS 6030", "Statistical Learning (online)", 2021, "Spring", NA,
   "SYS 4582/6018", "Data Mining", 2021, "Spring", "https://mdporter.github.io/SYS6018/",
@@ -73,6 +77,17 @@ format_teaching <- function(x, yr=2018, sem="Fall"){
 ```
 
 ```{r,  results='asis'}
+
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2021, sem="Fall"),
+  format_teaching(teaching, yr=2022, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
 
 HTML(
   "<div class=row>",
