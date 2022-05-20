@@ -15,27 +15,29 @@ hr(class="header")
 ```{r}
 teaching = tibble::tribble(
   ~id, ~title, ~year, ~semester, ~URL,
+  # 2022 Fall
+  "DS 6030", "Statistical Learning", 2022, "Fall", "https://mdporter.github.io/DS6030",  
   # 2022 Spring
   "SYS 4582/6018", "Data Mining", 2022, "Spring", "https://mdporter.github.io/SYS6018",
   # 2021 Fall
-  "DS 6030", "Statistical Learning", 2021, "Fall", "https://mdporter.github.io/DS6030",
+  "DS 6030", "Statistical Learning", 2021, "Fall", NA,
   # 2021 Spring
   "DS 6030", "Statistical Learning (online)", 2021, "Spring", NA,
-  "SYS 4582/6018", "Data Mining", 2021, "Spring", "https://mdporter.github.io/SYS6018/",
+  "SYS 4582/6018", "Data Mining", 2021, "Spring", NA,
   "SYS 4054", "Systems Design II", 2021, "Spring", NA,
   # 2020 Fall
-  "SYS 6018", "Data Mining", 2020, "Fall", "https://mdporter.github.io/SYS6018/",
+  "SYS 6018", "Data Mining", 2020, "Fall", NA,
   "SYS 4053", "Systems Design I", 2020, "Fall", NA,
   # 2020 Spring
   "SYS 4054", "Systems Design II", 2020, "Spring", NA,
   "SYS 6018", "Data Mining (Summer; online)", 2020, "Spring", NA,
   # 2019 Fall
   "SYS 2202", "Data and Information Engineering", 2019, "Fall", "https://mdporter.github.io/SYS2202/",
-  "SYS 6018", "Data Mining", 2019, "Fall", "https://mdporter.github.io/SYS6018/",
+  "SYS 6018", "Data Mining", 2019, "Fall", NA,
   "SYS 4055", "Systems Engineering Design Colloquium II", 2019, "Fall", NA,
   "SYS 4053", "Systems Design I", 2019, "Fall", NA,
   # 2019 Spring
-  "SYS 4582/6018", "Data Mining", 2019, "Spring", "https://mdporter.github.io/SYS6018/",
+  "SYS 4582/6018", "Data Mining", 2019, "Spring", NA,
   "QA 7600", "Data Analysis and Optimization (DAO)", 2019, "Spring", "http://registration.darden.virginia.edu/Course/Info/Abstracts_New/7600-0910.htm", 
   "SYS 4054", "Systems Design II", 2019, "Spring", NA,
   # 2018 Fall
@@ -59,10 +61,11 @@ teaching = tibble::tribble(
   "ST 260",   "Statistical Data Analysis", 2014, "Fall", NA 
 ) %>% mutate(course = paste(id, title, sep=": "), 
              course = ifelse(is.na(URL), paste("<p>", course, "</p>"), 
-                             paste("<p>", 
-                                   "<a class=teaching href=", URL, ">", paste0(id, ":"), "</a>",
+                             paste0("<p> ", 
+                                   "<a class=teaching href=", URL, ">", id, "</a>",
+                                   ": ",
                                    title,
-                                   "</p>")))
+                                   " </p>")))
 
 
 
@@ -77,6 +80,15 @@ format_teaching <- function(x, yr=2018, sem="Fall"){
 ```
 
 ```{r,  results='asis'}
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2022, sem="Fall"),
+  #format_teaching(teaching, yr=2023, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
 
 
 HTML(

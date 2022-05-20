@@ -38,7 +38,7 @@ h3("In Progress")
 
 ```{r in.progress, results='asis'}
 #-- In Progress
-inprogress = c("tian2022-presidential", "white-etal-endoexo", "li-porter-anomaly-dynamic-network",
+inprogress = c("white-etal-endoexo", "li-porter-anomaly-dynamic-network",
          "liao-porter-predictability", "clay-MISQ", "terrorism-book")
 articles = bib %>% 
   filter(BIBTEXKEY %in% inprogress) %>% 

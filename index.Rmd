@@ -52,13 +52,14 @@ hr()
 
 ```{r}
 # About
-about = p("I'm an Associate Professor in the ",
+about = p("I'm an Associate Professor in the",
                a(href="https://datascience.virginia.edu/", "School of Data Science"),
            "and the",                
                a(href="https://engineering.virginia.edu/departments/engineering-systems-and-environment", "Department of Engineering Systems and Environment"),
-           "and the",
-               a(href="https://www.darden.virginia.edu/", "Darden School of Business"),
-           "at the ",
+          "(previous appointment in the",
+           #"and the",
+                a(style="margin-right:-.5em", href="https://www.darden.virginia.edu/", "Darden School of Business"),
+           ") at the",
               a(href="http://www.virginia.edu", "University of Virginia."),            # " I also hold an affiliation with the",
               # a(href="https://dsi.virginia.edu/", "Data Science Institute."), 
           br(), 
@@ -73,12 +74,14 @@ background = p("I received a Ph.D. from the University of Virginia in 2006, a M.
 research = div(
               strong("Event Prediction:"), 
               em("modeling where, when, and why events occur"),
-              html_list(c("crime and terrorism prediction",
+              html_list(c(
+                "forecasting for social good",
+                "crime and terrorism prediction",
                          "traffic incident prediction",
                          "point processes, spatial statistics, time series, predictive analytics, machine learning")),
               strong("Pattern and Event Detection:"),
               em("discovering patterns and anomalies in data"),
-              html_list(c('anomaly detection', 'dynamic network analysis',
+              html_list(c('anomaly and changepoint detection', 'dynamic network analysis',
                           'spatial hotspot detection', 'clustering',
                           'data mining')),
               strong("Data Linkage: "), 
