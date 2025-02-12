@@ -15,10 +15,26 @@ hr(class="header")
 ```{r}
 teaching = tibble::tribble(
   ~id, ~title, ~year, ~semester, ~URL,
+  # 2025 Fall
+  # 2025 Spring
+  "DS 6410", "ML II: Methods and Applications", 2025, "Spring", NA,  
+  "SYS 4582/6018", "Data Mining", 2025, "Spring", "https://mdporter.github.io/SYS6018",     
+  # 2024 Fall
+  "DS 6030", "Statistical Learning", 2024, "Fall", "https://mdporter.github.io/DS6030",    
+  # 2024 Spring
+  "DS 6410", "ML II: Methods and Applications", 2024, "Spring", NA,  
+  "SYS 6018", "Data Mining", 2024, "Spring", NA,   
+  "SYS 4054", "Systems Design II", 2024, "Spring", NA,  
+  # 2023 Fall
+  "DS 6030", "Statistical Learning", 2023, "Fall", NA,  
+  "SYS 4053", "Systems Design I", 2023, "Fall", NA,
+  # 2023 Spring
+  "DS 6410", "ML II: Methods and Applications", 2023, "Spring", NA,
+  "SYS 4582/6018", "Data Mining", 2023, "Spring", NA,    
   # 2022 Fall
-  "DS 6030", "Statistical Learning", 2022, "Fall", "https://mdporter.github.io/DS6030",  
+  "DS 6030", "Statistical Learning", 2022, "Fall", NA,  
   # 2022 Spring
-  "SYS 4582/6018", "Data Mining", 2022, "Spring", "https://mdporter.github.io/SYS6018",
+  "SYS 4582/6018", "Data Mining", 2022, "Spring", NA,
   # 2021 Fall
   "DS 6030", "Statistical Learning", 2021, "Fall", NA,
   # 2021 Spring
@@ -83,8 +99,27 @@ format_teaching <- function(x, yr=2018, sem="Fall"){
 
 HTML(
   "<div class=row>",
+  format_teaching(teaching, yr=2024, sem="Fall"),
+  format_teaching(teaching, yr=2025, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+
+HTML(
+  "<div class=row>",
+  format_teaching(teaching, yr=2023, sem="Fall"),
+  format_teaching(teaching, yr=2024, sem="Spring"),  
+  "</div>"
+  )
+
+hr()
+
+HTML(
+  "<div class=row>",
   format_teaching(teaching, yr=2022, sem="Fall"),
-  #format_teaching(teaching, yr=2023, sem="Spring"),  
+  format_teaching(teaching, yr=2023, sem="Spring"),  
   "</div>"
   )
 

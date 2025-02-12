@@ -13,7 +13,7 @@
 
 <title>Michael D. Porter: Research</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -54,6 +54,7 @@ if (window.hljs) {
   }
 }
 </script>
+
 
 
 
@@ -83,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -140,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -173,8 +181,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -182,16 +190,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -235,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -306,7 +307,7 @@ $(document).ready(function () {
 </div>
 
 
-<p><h2 style="display:block">Research</h2></p>
+<h2 style="display:block">Research</h2>
 <div class="btn-group" style="font-size:86%">
 <a href="#event-prediction">
 <button class="button">Event Prediction</button>
@@ -318,7 +319,7 @@ $(document).ready(function () {
 <button class="button">Data Linkage</button>
 </a>
 </div>
-<p><hr class="header"/></p>
+<hr class="header"/>
 <div class="row">
 <div class="col-sm-12">
 <h3 id="event-prediction">
@@ -328,16 +329,20 @@ Event Prediction and Forecasting
 <p>
 Event prediction is concerned with
 <em style="color:#E57200;">modeling where, when, and why events occur.</em>
-The estimated locations and times of future events can be informed by characteristics and attributes of the spatio-temporal environment (i.e., feature space) as well as by the patterns in the event history. A Hawkes, or self-exciting point process, model is a formalized approach to combine information from both the feature space and the event history while automatically determining how much weight to give to recent events. These models have been used to represent processes such as: earthquakes,  crime and conflict, traffic incidents, social media activity, financial markets, new product adoption, social network communication, neural spiking, and disease spread.
+The estimated locations and times of future events can be informed by characteristics and attributes of the spatio-temporal environment (i.e., feature space) as well as by the patterns in the event history. A Hawkes, or self-exciting point process, model is a formalized approach to combine information from both the feature space and the event history while automatically determining how much weight to give to recent events. These models have been used to represent processes such as: earthquakes,  crime and conflict, traffic incidents, social media activity, financial markets, new product adoption, social network communication, neural spiking, and disease spread. These models have led to winning performances in NIJ's Real-time Crime Forecasting and Recidivism Forecasting Challenges.
 </p>
 <p>
 Topics include:
-<em>point processes, Hawkes models, self-exciting models, kernel density estimation, spatial statistics, time series, predictive analytics, machine learning.</em>
+<em>forecasting, point processes, Hawkes models, self-exciting models, kernel density estimation, spatial statistics, time series, predictive analytics, machine learning.</em>
 </p>
 <p>Recent Papers:</p>
 <ul>
-<li>A note on the multiplicative fairness score in the NIJ recidivism forecasting challenge. <em> Crime Science </em>, 10(1): 1--5, 2021. (Mohler G. and Porter M.D.) <a href=https://crimesciencejournal.biomedcentral.com/articles/10.1186/s40163-021-00152-x>[PDF]</a></li>
-<li>Forecasting for social good. <em> International Journal of Forecasting </em>, : 2021. (Rostami-Tabar B., Ali M.M., Hong T., Hyndman R.J., Porter M.D., and Syntetos A.) <a href=https://arxiv.org/abs/2009.11669>[PDF]</a></li>
+<li>Endogenous and exogenous effects in self-exciting process models of terrorist activity. <em> Statistica Neerlandica </em>, 79(1): e12347, 2025. (Ruggeri F., Porter M.D., and White G.) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/stan.12347>[PDF]</a></li>
+<li>Time of week intensity estimation from partly interval censored data with applications to police patrol planning. <em> Journal of Applied Statistics </em>, : 1--19, 2024. (Tian J. and Porter M.D.) <a href=https://www.tandfonline.com/doi/abs/10.1080/02664763.2024.2371901>[PDF]</a></li>
+<li>Deep-Learning Based Probabilistic Forecasting Framework for Censored Data. <em> 23rd IEEE International Conference on Machine Learning and Applications (ICMLA) </em>, 2024. (Tian J. and Porter M.D.)</li>
+<li>Simulating Fake News Dissemination on Twitter with Multivariate Hawkes Processes. <em> 2022 IEEE International Conference on Big Data (Big Data) </em>, 3597--3606, 2022. (Jiang Y. and Porter M.D.) <a href=https://ieeexplore.ieee.org/document/10020285>[PDF]</a></li>
+<li>Forecasting for social good. <em> International Journal of Forecasting </em>, 38(3): 1245--1257, 2022. (Rostami-Tabar B., Ali M.M., Hong T., Hyndman R.J., Porter M.D., and Syntetos A.) <a href=https://arxiv.org/abs/2009.11669>[PDF]</a></li>
+<li>A note on the multiplicative fairness score in the NIJ recidivism forecasting challenge. <em> Crime Science </em>, 10(17): 1--5, 2021. (Mohler G. and Porter M.D.) <a href=https://crimesciencejournal.biomedcentral.com/articles/10.1186/s40163-021-00152-x>[PDF]</a></li>
 <li>Rotational grid, PAI-maximizing crime forecasts. <em> Statistical Analysis and Data Mining </em>, 11(5): 227--236, 2018. (Mohler G. and Porter M.D.) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1002/sam.11389>[PDF]</a></li>
 <li>GPU accelerated MCMC for modeling terrorist activity. <em> Computational Statistics and Data Analysis </em>, 71: 643--651, 2014. (White G. and Porter M.D.) <a href=https://www.sciencedirect.com/science/article/pii/S0167947313001291>[PDF]</a></li>
 <li>Modelling the effectiveness of counter-terrorism interventions. <em> Trends and Issues in Crime and Criminal Justice </em>, (457): 1--8, 2014. (White G., Mazerolle L., Porter M.D., and Chalk P.) <a href=http://apo.org.au/system/files/40167/apo-nid40167-94921.pdf>[PDF]</a></li>
@@ -350,12 +355,14 @@ Topics include:
 </ul>
 <p>Recent Funding:</p>
 <ul>
+<li>Agency for Healthcare Research and Quality (AHRQ): <em> Improving Pediatric Donor Heart Utilization with Predictive Analytics </em>; $1,025,000.</li>
+<li>National Highway Traffic Safety Administration (NHTSA): <em> Statistical Analysis for Motor Vehicle Crash Insights</li>
 <li>Ivy Foundation COVID-19 Translational Research Fund: <em> Epidemiologic Modeling, Public Health Surveillance and Sewershed Monitoring to Predict Surges in the COVID-19 Pandemic </em>; $100,000.</li>
 <li>Center for Advanced Public Safety: <em> Predictive Crash Analytics </em>; $119,996.</li>
 </ul>
 </div>
 </div>
-<p><hr/></p>
+<hr/>
 <div class="row">
 <div class="col-sm-12">
 <h3 id="pattern-detection">
@@ -365,7 +372,8 @@ Pattern and Event Detection
 <p>
 Pattern and event detection is concerned with
 <em style="color:#E57200;">discovering patterns and anomalies in data.</em>
-This often involves problems where the quick detection of anomalies or unusual observations from a data stream is crucial (e.g., disease and crime outbreak detection, activation of terrorist sleeper cell). But in addition to being able to detect the changes quickly, we should also be able to identify the cause of the event - like the spatial location where the outbreak started or the network neighborhood responsible for fraudulent financial activities. 
+This often involves problems where the quick detection of anomalies or unusual observations from a data stream is crucial (e.g., disease and crime outbreak detection, activation of terrorist sleeper cell). In addition to being able to detect the changes quickly, we should also be able to identify the cause of the event - like the spatial location where the outbreak started or the network neighborhood responsible for fraudulent financial activities. 
+I have developed several techniques to detect change points and anomalies in high dimensional time-series based on scan statistics, a technique to quickly search over many time or space windows while properly accounting for multiple testing. 
 
 Clustering is another approach to making sense of complex data. This is the task of grouping observations that share features or have similar patterns. Similarly, data mining and machine learning approaches can be used to identify the features most useful for prediction or understanding the data generating process. 
 
@@ -377,7 +385,9 @@ Topics include:
 </p>
 <p>Recent Papers:</p>
 <ul>
-<li>Changing Presidential Approval: Detecting and Understanding Change Points in Interval Censored Polling Data. <em> Stat </em>, (): e463, 2022. (Tian J. and Porter M.D.) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1002/sta4.463>[PDF]</a></li>
+<li>Contextual Embeddings in Sociological Research: Expanding the Analysis of Sentiment and Social Dynamics. <em> Sociological Methodology </em>, 55},: 25--58, 2025. (Mostafavi M., Porter M.D., and Robinson D.T.) <a href=https://journals.sagepub.com/doi/abs/10.1177/00811750241260729>[PDF]</a></li>
+<li>Pediatric donor heart utilization variability among organ procurement organizations. <em> Pediatric Transplantation </em>, 28(3): e14747, 2024. (Haregu F., Dixon R.J., Porter M., and McCulloch M.) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/petr.14747>[PDF]</a></li>
+<li>Changing presidential approval: Detecting and understanding change points in interval censored polling data. <em> Stat </em>, 11(1): e463, 2022. (Tian J. and Porter M.D.) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1002/sta4.463>[PDF]</a></li>
 <li>Learning to rank spatio-temporal event hotspots. <em> Crime Science </em>, 9(3): 1--12, 2020. (Mohler G., Porter M.D., Carter J., and LaFree G.) <a href=http://urbcomp.ist.psu.edu/2018/papers/ltr.pdf>[PDF]</a></li>
 <li>Detecting, identifying, and localizing radiological material in urban environments using scan statistics. <em> IEEE International Symposium on Technologies for Homeland Security (HST) </em>, 1--6, 2019. (Porter M.D. and Akakpo A.) <a href=http://hstabstractbook.org/index_htm_files/c-Detecting_Radiological_Threats_in_Urban_Areas_HST_cameraReady.pdf>[PDF]</a></li>
 <li>Learning to rank spatio-temporal event hotspots. <em> URBCOMP2018 </em>, 2018. (Mohler G., Porter M.D., Carter J., and LaFree G.) <a href=http://urbcomp.ist.psu.edu/2018/papers/ltr.pdf>[PDF]</a></li>
@@ -396,7 +406,7 @@ Topics include:
 </ul>
 </div>
 </div>
-<p><hr/></p>
+<hr/>
 <div class="row">
 <div class="col-sm-12">
 <h3 id="data-linkage">

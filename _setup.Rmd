@@ -18,6 +18,13 @@ html_list <- function(x){
 
 ```
 
+
+```{r copy-CV, include=FALSE}
+#-- Copy current CV
+#file.copy("~/Dropbox/DOCS/Porter_CV/porterCV.pdf", ".", overwrite=TRUE)
+```
+
+
 ```{r bibtex, include=FALSE}
 #-- Bibtex functions
 library(bib2df)

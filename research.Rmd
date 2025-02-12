@@ -30,9 +30,9 @@ div(class="row",
          id="event-prediction"), 
     p("Event prediction is concerned with", 
       em(style="color:#E57200;","modeling where, when, and why events occur."),
-      "The estimated locations and times of future events can be informed by characteristics and attributes of the spatio-temporal environment (i.e., feature space) as well as by the patterns in the event history. A Hawkes, or self-exciting point process, model is a formalized approach to combine information from both the feature space and the event history while automatically determining how much weight to give to recent events. These models have been used to represent processes such as: earthquakes,  crime and conflict, traffic incidents, social media activity, financial markets, new product adoption, social network communication, neural spiking, and disease spread."),
+      "The estimated locations and times of future events can be informed by characteristics and attributes of the spatio-temporal environment (i.e., feature space) as well as by the patterns in the event history. A Hawkes, or self-exciting point process, model is a formalized approach to combine information from both the feature space and the event history while automatically determining how much weight to give to recent events. These models have been used to represent processes such as: earthquakes,  crime and conflict, traffic incidents, social media activity, financial markets, new product adoption, social network communication, neural spiking, and disease spread. These models have led to winning performances in NIJ's Real-time Crime Forecasting and Recidivism Forecasting Challenges."),
     p("Topics include:", 
-      em("point processes, Hawkes models, self-exciting models, kernel density estimation, spatial statistics, time series, predictive analytics, machine learning.")
+      em("forecasting, point processes, Hawkes models, self-exciting models, kernel density estimation, spatial statistics, time series, predictive analytics, machine learning.")
       ),
     p("Recent Papers:"),
     html_list(
@@ -42,7 +42,10 @@ div(class="row",
       mutate(citation = format_article(., format="html")) %>% 
       pull(citation)),
     p("Recent Funding:"), 
-    html_list(c("Ivy Foundation COVID-19 Translational Research Fund: <em> Epidemiologic Modeling, Public Health Surveillance and Sewershed Monitoring to Predict Surges in the COVID-19 Pandemic </em>; $100,000.", 
+    html_list(c(
+      "Agency for Healthcare Research and Quality (AHRQ): <em> Improving Pediatric Donor Heart Utilization with Predictive Analytics </em>; $1,025,000.",
+      "National Highway Traffic Safety Administration (NHTSA): <em> Statistical Analysis for Motor Vehicle Crash Insights", 
+      "Ivy Foundation COVID-19 Translational Research Fund: <em> Epidemiologic Modeling, Public Health Surveillance and Sewershed Monitoring to Predict Surges in the COVID-19 Pandemic </em>; $100,000.", 
       "Center for Advanced Public Safety: <em> Predictive Crash Analytics </em>; $119,996."))    
 ))
 ```
@@ -58,7 +61,8 @@ div(class="row",
        id="pattern-detection"), 
     p("Pattern and event detection is concerned with", 
       em(style="color:#E57200;", "discovering patterns and anomalies in data."),
-      "This often involves problems where the quick detection of anomalies or unusual observations from a data stream is crucial (e.g., disease and crime outbreak detection, activation of terrorist sleeper cell). But in addition to being able to detect the changes quickly, we should also be able to identify the cause of the event - like the spatial location where the outbreak started or the network neighborhood responsible for fraudulent financial activities. 
+      "This often involves problems where the quick detection of anomalies or unusual observations from a data stream is crucial (e.g., disease and crime outbreak detection, activation of terrorist sleeper cell). In addition to being able to detect the changes quickly, we should also be able to identify the cause of the event - like the spatial location where the outbreak started or the network neighborhood responsible for fraudulent financial activities. 
+I have developed several techniques to detect change points and anomalies in high dimensional time-series based on scan statistics, a technique to quickly search over many time or space windows while properly accounting for multiple testing. 
 
 Clustering is another approach to making sense of complex data. This is the task of grouping observations that share features or have similar patterns. Similarly, data mining and machine learning approaches can be used to identify the features most useful for prediction or understanding the data generating process. 
 
