@@ -8,6 +8,7 @@ output:
       before_body: header.html
       after_body: footer.html
     css: styles.css    
+    pandoc_args: "--strip-comments"  
 navbar:
   #title: "Michael D. Porter"
   title: '<div> <img id="logo" src="images/touch-icon-76.png"/> <span> Michael D. Porter </span> </div>'

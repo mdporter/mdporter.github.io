@@ -31,14 +31,6 @@ div(class="container-fluid",
             br(),
             h3(a(href="https://engineering.virginia.edu/faculty/michael-d-porter", 
                  "Engineering Faculty Page"))
-            # h3(
-              # a(href="https://www.darden.virginia.edu/components/templates/T17-Faculty-Interior_Profile_Page.pb.aspx?pageid=10737420180", "Darden Faculty Page"))                  #a(href="https://www.darden.virginia.edu/faculty-research/directory/michael-porter", "Darden Faculty Page"))
-            #   h5("102F Olsson Hall")
-            # ),
-            # br(),
-            # h5("151 Engineers Way, P.O. Box 400747"),
-            # br(), 
-            # h5("Charlottesville, VA 22904")
         )
     )
 )
@@ -60,12 +52,7 @@ about = p("I'm an Associate Professor in the",
            #"and the",
                 a(style="margin-right:-.5em", href="https://www.darden.virginia.edu/", "Darden School of Business"),
            ") at the",
-              a(href="http://www.virginia.edu", "University of Virginia.")            # " I also hold an affiliation with the",
-              # a(href="https://dsi.virginia.edu/", "Data Science Institute."), 
-          # br(), 
-          # "I enjoy spending time with my bride,", 
-          #     a(href="https://www.linkedin.com/in/erica-porter-9a24847", "Erica,"), "and three kids Evie, Joseph, and Benjamin, reading, and being",
-          #     a(href="http://bwca.com/", "outdoors.")
+              a(href="http://www.virginia.edu", "University of Virginia.")  
           ) 
 
 # Education and Experience
